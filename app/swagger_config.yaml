@@ -1,0 +1,35 @@
+# app/swagger_config.yaml
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Get Products API"
+  description: "API to get products from the database"
+paths:
+  /items:
+    get:
+      description: "Get all products"
+      responses:
+        200:
+          description: "Successfully fetched products"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+              products:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    id:
+                      type: "integer"
+                    name:
+                      type: "string"
+                    description:
+                      type: "string"
+                    price:
+                      type: "string"
+                    created_at:
+                      type: "string"
+        404:
+          description: "No products found"
