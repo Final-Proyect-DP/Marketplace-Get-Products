@@ -12,9 +12,9 @@ def create_app():
     
     db.init_app(app)
     Swagger(app, template_file="swagger_config.yaml")
-    CORS(app)  # Habilitar CORS para todas las rutas
+    CORS(app)  # Enable CORS for all routes
 
-    # Registrar Blueprints de las rutas
+    # Register Blueprints for the routes
     app.register_blueprint(product_bp)
     app.register_blueprint(read_bp)
 
