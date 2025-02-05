@@ -3,7 +3,7 @@ from flask import jsonify, request
 from app.models.models import Product, Category
 from app.extensions.extensions import db
 
-def webhook():
+def webhook(request):
     data = request.json
     if not data:
         return jsonify({"message": "No data received"}), 400
