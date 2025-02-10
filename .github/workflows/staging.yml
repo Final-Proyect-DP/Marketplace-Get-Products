@@ -21,8 +21,8 @@ jobs:
           FLASK_APP: ${{ secrets.FLASK_APP }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          echo "FLASK_APP=${{ secrets.FLASK_APP }}" > .env
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
+          echo "FLASK_APP=${{ env.FLASK_APP }}" > .env
+          echo "DATABASE_URL=${{ env.DATABASE_URL }}" >> .env
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -92,11 +92,14 @@ jobs:
           port: 22
           timeout: "120s"
           script: |
-            echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
+            set -e
+            echo "Deploying image: fernando785/marketplace-get-products:latest"
+            sudo docker stop get-product || true
+            sudo docker rm get-product || true
+            sudo docker pull fernando785/marketplace-get-products:latest
             sudo docker run -d \
               --name get-product \
               -p 5000:5000 \
               --restart unless-stopped \
-              --env-file .env \
               fernando785/marketplace-get-products:latest
-
+            sudo docker system prune -af --volumes || true 
