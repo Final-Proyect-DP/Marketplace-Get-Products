@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')  # Fix typo
+    SQLALCHEMY_DATABASE_URL = os.getenv('DATABASE_URL')  # Fix typo
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-print(f"DATABASE_URI: {Config.SQLALCHEMY_DATABASE_URI}")
+print(f"DATABASE_URL: {Config.SQLALCHEMY_DATABASE_URL}")
