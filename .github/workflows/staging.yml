@@ -21,7 +21,7 @@ jobs:
           FLASK_APP: ${{ secrets.FLASK_APP }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          echo "WEBHOOK_URL=${WEBHOOK_URL}" > .env
+          echo "FLASK_APP=${FLASK_APP}" > .env
           echo "DATABASE_URL=${DATABASE_URL}" >> .env
 
       - name: Set up Docker Buildx
