@@ -37,7 +37,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: fernando785/marketplace-create_product
+          images: fernando785/marketplace-get-products
           tags: |
             type=raw,value=staging
           
@@ -46,7 +46,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: fernando785/marketplace-create_product:latest
+          tags: fernando785/marketplace-get-products:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
