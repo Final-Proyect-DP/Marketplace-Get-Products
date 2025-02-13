@@ -15,7 +15,13 @@ def get_all_products():
     products_list = [product.to_dict() for product in products]
     return jsonify({"message": "Products fetched successfully", "products": products_list}), 200
 
+@read_bp.route('/health', methods=['GET'])
+def health_check():
+    return jsonify(status='OK', service='user-read'), 200
 
 @read_bp.route('/webhook', methods=['POST'])
 def webhook():
     return handle_webhook(request)
+
+
+
